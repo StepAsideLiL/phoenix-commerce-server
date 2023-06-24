@@ -3,7 +3,8 @@ const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
 
-const userRoutes = require('./routes/user.route');
+const userRoutes = require("./routes/user.route");
+const productRoutes = require("./routes/product.route");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -22,7 +23,8 @@ app.get("/", (req, res) => {
 });
 
 // bypass route
-app.use('/api/users', userRoutes)
+app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
 
 mongoose
   .connect(uri, { useUnifiedTopology: true })
