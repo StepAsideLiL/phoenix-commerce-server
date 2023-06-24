@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/user.route");
 const productRoutes = require("./routes/product.route");
+const reviewRoutes = require("./routes/review.route")
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 // bypass route
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 mongoose
   .connect(uri, { useUnifiedTopology: true })
