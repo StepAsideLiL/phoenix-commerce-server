@@ -2,6 +2,9 @@ require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
 const mongoose = require("mongoose");
+
+const userRoutes = require('./routes/user.route');
+
 const app = express();
 const port = process.env.PORT || 8080;
 const uri = process.env.MONGO_URI;
@@ -17,6 +20,9 @@ app.use(
 app.get("/", (req, res) => {
   res.send("Phoenix-commerce-server is running");
 });
+
+// bypass route
+app.use('/api/users', userRoutes)
 
 mongoose
   .connect(uri, { useUnifiedTopology: true })
