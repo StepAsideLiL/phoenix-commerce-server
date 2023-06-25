@@ -5,7 +5,8 @@ const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/user.route");
 const productRoutes = require("./routes/product.route");
-const reviewRoutes = require("./routes/review.route")
+const reviewRoutes = require("./routes/review.route");
+const orderRoutes = require("./routes/order.route");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -27,7 +28,9 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/reviews", reviewRoutes);
+app.use('/api/payments',orderRoutes);
 
+// Db connection
 mongoose
   .connect(uri, { useUnifiedTopology: true })
   .then(() => {
