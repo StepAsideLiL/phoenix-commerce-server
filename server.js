@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/reviews", reviewRoutes);
-app.use('/api/payments',orderRoutes);
+app.use("/api/payments", orderRoutes);
 
 // Db connection
 mongoose
